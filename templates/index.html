@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Ko dolazi na svadbu?</title>
+    <!-- <meta name="viewport" content="width=device-width,initial-scale=1.0"> -->
+    <style>
+        body {
+            display: flex;
+            justify-content: center; /* Center horizontally */
+            align-items: center; /* Center vertically */
+            min-height: 100vh;
+            margin: 0;
+            background-color: rgb(255, 255, 241);
+            background-image: url("{{ url_for('static', filename='cvetovi.png') }}");
+            background-repeat: no-repeat;
+            background-size: contain;
+            background-position: top right; /* Set background image to top right corner */
+            position: relative;
+        }
+        .container {
+            text-align: center;
+            margin-top: 20px;
+        }
+        .textbox {
+            width: 80%; /* Make the input box wider */
+            padding: 10px;
+            font-size: 16px;
+            border: none; /* Remove border */
+            border-radius: 15px; /* Apply rounded edges */
+            background-color: rgba(255, 255, 255, 0.8); /* Set background color with transparency */
+        }
+        .submit-btn {
+            padding: 10px 20px;
+            font-size: 16px;
+        }
+        .imena {
+            max-width: 2000px;
+            margin: 0;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+        }
+        .qr-code {
+            position: absolute;
+            bottom: 10px; /* Adjust vertical position for larger screens */
+            right: 10px; /* Adjust horizontal position for larger screens */
+            width: 50px; /* Adjust QR code width for larger screens */
+            height: auto; /* Maintain aspect ratio */
+        }
+
+        /* Media Query for responsiveness */
+        @media screen and (max-width: 768px) {
+            .textbox {
+                width: 150%; /* Make it a bit wider on mobile */
+            }
+            .qr-code {
+                width: 100px; /* Adjust QR code width on mobile */
+                bottom: 10px; /* Stick to bottom for mobile */
+                right: 10px; /* Stick to right for mobile */
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <img class="imena" src="{{ url_for('static', filename='imena.png') }}" alt="imena">
+        <h1>Ко долази на свадбу?</h1>
+        <form method="POST">
+            <input class="textbox" type="text" name="name" placeholder="Унесите име..." required>
+            <br>
+            <input class="submit-btn" type="submit" value="потврди">
+        </form>
+        <img class="qr-code" src="{{ url_for('static', filename='qrcodes.png') }}" alt="qrcode">
+    </div>
+</body>
+</html>
